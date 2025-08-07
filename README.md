@@ -124,8 +124,6 @@ streamlit run src/dashboard.py
 uvicorn main:app --reload
 ```
 
-* API docs: [`http://localhost:8000/docs`](http://localhost:8000/docs)
-
 ---
 
 ## 🧪 Testing & Linting
