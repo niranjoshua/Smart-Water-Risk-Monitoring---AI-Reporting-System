@@ -1,206 +1,186 @@
-# Smart Water Risk Monitoring & AI Reporting System
+# 🚰 Smart Water Risk Monitoring & AI Reporting System
 
-A comprehensive IoT water monitoring system that predicts risk conditions for legionella formation and provides AI-generated risk reports with actionable insights.
+> **An end-to-end IoT platform for real-time water quality monitoring, AI-powered risk assessment, and automated reporting to prevent Legionella outbreaks.**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![MIT License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)
+![FastAPI](https://img.shields.io/badge/framework-FastAPI-green.svg)
+![Streamlit](https://img.shields.io/badge/visualization-Streamlit-orange.svg)
+![OpenAI](https://img.shields.io/badge/AI-OpenAI-purple.svg)
 
-## Features
+---
 
-- 🌊 **Real-time Water Quality Monitoring**
-  - Temperature, pH, turbidity tracking
-  - Dissolved oxygen monitoring
-  - Conductivity measurement
+## 🧠 Overview
 
-- 🤖 **AI-Powered Risk Assessment**
-  - Machine learning-based risk prediction
-  - Real-time alerts for dangerous conditions
-  - Historical trend analysis
+This system simulates IoT sensors to collect water quality data, assesses risk using machine learning, and provides real-time visualization and AI-generated reports.
+Perfect for **buildings, healthcare facilities, and public utilities** aiming to maintain water safety standards.
 
-- 📊 **Interactive Dashboard**
-  - Real-time data visualization
-  - Risk level indicators
-  - Historical data trends
+---
 
-- 📝 **Automated Reporting**
-  - AI-generated risk reports
-  - Actionable recommendations
-  - PDF report generation
+## 🔍 Key Features
 
-## Quick Start
+### 🌡️ Water Quality Monitoring
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/smart-water-monitoring.git
-   cd smart-water-monitoring
-   ```
+* Simulates sensors for temperature, pH, turbidity, dissolved oxygen, and conductivity
+* Stores real-time data in an SQLite database
 
-2. **Set up environment**
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-   pip install -r requirements.txt
-   ```
+### 🧠 AI Risk Detection
 
-3. **Configure environment variables**
-   ```bash
-   cp .env.example .env
-   # Edit .env with your configurations
-   ```
+* Predicts Legionella risk using a trained ML model
+* Analyzes historical patterns & detects anomalies
 
-4. **Run the application**
-   ```bash
-   uvicorn main:app --reload
-   ```
+### 📊 Interactive Dashboard
 
-Visit `http://localhost:8000/docs` for the API documentation.
+* Built with **Streamlit**
+* Live charts and health indicators
+* Exportable reports and historical analysis
 
-## Project Structure
+### 📝 RAG-Powered Reporting
+
+* Uses **OpenAI + LangChain** for automated summaries
+* Generates risk-level reports with safety recommendations (PDF support)
+
+---
+
+## 📁 Folder Structure
 
 ```
-src/
-├── api/             # FastAPI endpoints
-├── models/          # Data models
-├── services/        # Business logic
-├── middleware/      # Middleware components
-├── utils/          # Utility functions
-└── tests/          # Test files
+smart-water-risk-monitoring/
+├── src/
+│   ├── api/               # FastAPI endpoints
+│   ├── models/            # ML models & DB models
+│   ├── services/          # Business logic
+│   ├── middleware/        # Request/response middleware
+│   ├── utils/             # Helper functions
+│   ├── dashboard.py       # Streamlit dashboard
+│   ├── report_generator.py # RAG report generation
+│   └── risk_prediction.py # ML pipeline
+│
+├── data/
+│   ├── db/                # SQLite files
+│   └── logs/              # Application logs
+│
+├── notebooks/             # Jupyter analysis & experiments
+├── docs/                  # API and usage docs
+├── .github/               # GitHub workflows
+├── .env.example           # Environment variable template
+├── requirements.txt       # Dependencies
+├── Dockerfile             # Docker image setup
+├── docker-compose.yml     # Docker orchestration
+└── README.md              # You're here!
 ```
 
-## Development
+---
 
-### Prerequisites
-- Python 3.10+
-- FastAPI
-- SQLite
-- Redis (optional, for caching)
+## ⚙️ Getting Started
 
-### Running Tests
+### 🔧 Setup
+
 ```bash
-pytest
+git clone https://github.com/yourusername/smart-water-risk-monitoring.git
+cd smart-water-risk-monitoring
 ```
 
-### Code Quality
-```bash
-# Run linting
-flake8 src tests
+### 🐍 Create Virtual Environment
 
-# Run type checking
-mypy src
-```
-
-## Deployment
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-## Acknowledgments
-
-- OpenAI for LLM capabilities
-- FastAPI for the web framework
-- Streamlit for the dashboard interface
-
-## Project Structure
-
-```
-Smart Water Monitoring System/
-├── data/                  # Database and data files
-├── models/               # Trained ML models
-├── notebooks/           # Jupyter notebooks for analysis
-└── src/                 # Source code
-    ├── sensor_simulation.py    # IoT sensor data simulation
-    ├── risk_prediction.py      # ML risk prediction model
-    ├── report_generator.py     # RAG-powered report generation
-    └── dashboard.py           # Streamlit dashboard
-```
-
-## Setup Instructions
-
-1. Create a Python virtual environment:
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+source .venv/bin/activate      # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
 ```
 
-2. Install required packages:
+### 🔐 Configure Environment
+
 ```bash
-pip install numpy pandas scikit-learn streamlit plotly sqlite3 python-dotenv langchain openai
+cp .env.example .env
+# Add your OpenAI API key & configs to .env
 ```
 
-3. Configure environment variables:
-- Copy `.env.example` to `.env`
-- Add your OpenAI API key to `.env`
+---
 
-## Running the System
+## 🚀 Running the App
 
-1. Generate initial sensor data and train the model:
+### 1. Simulate Sensor Data
+
 ```bash
 python src/sensor_simulation.py
+```
+
+### 2. Train & Run Risk Prediction Model
+
+```bash
 python src/risk_prediction.py
 ```
 
-2. Launch the dashboard:
+### 3. Launch Streamlit Dashboard
+
 ```bash
 streamlit run src/dashboard.py
 ```
 
-## Features
+### 4. Launch FastAPI Backend
 
-1. **IoT Sensor Data Simulation**
-   - Simulates water quality parameters including temperature, pH, turbidity
-   - Stores data in SQLite database
-   - Configurable simulation intervals
+```bash
+uvicorn main:app --reload
+```
 
-2. **AI Risk Prediction**
-   - Machine learning model to detect high-risk conditions
-   - Real-time risk assessment
-   - Historical trend analysis
+* API docs: [`http://localhost:8000/docs`](http://localhost:8000/docs)
 
-3. **RAG-Powered Risk Reporting**
-   - AI-generated daily reports
-   - Actionable insights and recommendations
-   - Historical context integration
+---
 
-4. **Interactive Dashboard**
-   - Real-time monitoring of water parameters
-   - Risk level visualization
-   - Historical trends and analysis
-   - On-demand AI report generation
+## 🧪 Testing & Linting
 
-## Data Sources
+```bash
+pytest                   # Run tests
+flake8 src tests         # Lint code
+mypy src                 # Type checking
+```
 
-The system uses simulated data that mimics real-world water quality parameters:
+---
 
-- Temperature (°C)
-- pH levels
-- Turbidity (NTU)
-- Dissolved Oxygen (mg/L)
-- Conductivity (µS/cm)
+## 🔐 Security Highlights
 
-Risk thresholds are based on standard water quality guidelines for legionella prevention.
+* Environment-based secret management
+* SQL injection and XSS-safe inputs
+* Prepped for OAuth2 / JWT Auth
+* Scalable and containerized with Docker
 
-## Security & Scalability
+---
 
-The system implements several security best practices:
+## 📈 Future Improvements
 
-- Environment variable configuration for sensitive data
-- Database access controls
-- Input validation and sanitization
+* ✅ Redis-based caching for faster model inference
+* ✅ Real sensor integration (ESP32, Arduino, etc.)
+* ⏳ Multi-user role-based authentication
+* ⏳ Integration with cloud dashboards (e.g., Grafana)
 
-For production deployment, consider:
+---
 
-- Implementing user authentication
-- Using secure cloud storage
-- Setting up automated backups
-- Implementing API rate limiting
-- Adding data validation layers
+## 📚 Acknowledgments
+
+* [FastAPI](https://fastapi.tiangolo.com)
+* [Streamlit](https://streamlit.io/)
+* [LangChain](https://www.langchain.com/)
+* [OpenAI API](https://platform.openai.com/)
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
+
+> ⭐ Star this repo to support the project!
+
+---
+
+## 🎥 Screenshots / Demo 
+
+![alt text](image.png)
+
+---
